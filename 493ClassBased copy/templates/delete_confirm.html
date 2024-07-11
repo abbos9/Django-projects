@@ -1,0 +1,15 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<form action="{% url 'games:delete' pk=game.id %}" method="post">
+    {% csrf_token %}
+    <h1>Rostan ham o'chirmoqchisiz ?</h1>
+    <button type="submit">Ha</button>
+</form>
+<a href="{% url 'games:list' %}"><button>Yo'q</button></a>
+</body>
+</html>

@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css"
+      integrity="sha512-z3gLpd7yknf1YoNbCzqRKc4qyor8gaKU1qmn+CShxbuBusANI9QpRohGBreCFkKxLhei6S9CQXFEbbKuqLg0DA=="
+      crossorigin="anonymous"
+      referrerpolicy="no-referrer"
+    />
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+      integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN"
+      crossorigin="anonymous"
+    />
+  </head>
+
+  <body style="background-color: gray">
+    <h1 class="text-center mt-5">Books list</h1>
+    <a href="http://127.0.0.1:8000/books/add/" class="btn btn-primary"
+      ><book class="fa-solid fa-plus" style="color: #ffffff"></book
+    ></a>
+
+    <div class="container">
+      <form action="" method="GET">
+        <div class="input-group">
+          <div class="form-outline" data-mdb-input-init>
+            <input type="search" name="q" class="form-control" />
+          </div>
+          <button type="submit" class="btn btn-primary" data-mdb-ripple-init>
+            <i class="fas fa-search"></i>
+          </button>
+        </div>
+      </form>
+      <div
+        class="genre__setion"
+        style="display: flex; justify-content: space-evenly"
+      >
+        {% for genre in genres%}
+        <div class="genre">
+          <a
+            href="http://127.0.0.1:8000/books/list/?genre={{genre.title}}"
+            style="text-decoration: none"
+          >
+            <img
+              class="rounded-circle"
+              style="max-width: 30px; max-height: 30px"
+              src="{{genre.icon.url}}"
+              alt=""
+            />
+            <br />
+            <span>{{genre.title}}</span></a
+          >
+        </div>
+        {% endfor %}
+      </div>
+      <table class="table" style="background-color: white">
+        <thead>
+          <tr>
+            <th scope="col">#</th>
+            <th scope="col">Title</th>
+            <th scope="col">Author</th>
+            <th scope="col">Genres</th>
+            <th scope="col">Price</th>
+            <th scope="col">Published Year</th>
+            <th scope="col">Page Size</th>
+            <th scope="col">Actions</th>
+          </tr>
+        </thead>
+        <tbody>
+          {% for book in books %}
+          <tr>
+            <th scope="row">{{book.pk}}</th>
+            <td>{{book.title}}</td>
+            <td>{{book.author}}</td>
+            <td>
+              <ul>
+                {% for genre in book.genre.all %}
+                <li>{{ genre.title }}</li>
+                {% endfor %}
+              </ul>
+            </td>
+            <td>{{book.price}}</td>
+            <td>{{book.published}}</td>
+            <td>{{book.page_size}}</td>
+            <td>
+              <a href="http://127.0.0.1:8000/books/detail/{{book.pk}}"
+                ><book class="fa-solid fa-eye" style="color: #005eff"></book></a
+              ><a href="http://127.0.0.1:8000/books/{{book.pk}}/delete/"
+                ><book
+                  class="fa-sharp fa-solid fa-trash"
+                  style="color: #ff0000"
+                ></book></a
+              ><a href="http://127.0.0.1:8000/books/{{book.pk}}/update/"
+                ><book class="fa-solid fa-pen" style="color: #005eff"></book
+              ></a>
+            </td>
+          </tr>
+          {% endfor %}
+        </tbody>
+      </table>
+    </div>
+  </body>
+</html>

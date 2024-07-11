@@ -1,0 +1,57 @@
+{% load my_tags %}
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>detail_book</title>
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css"
+      integrity="sha512-z3gLpd7yknf1YoNbCzqRKc4qyor8gaKU1qmn+CShxbuBusANI9QpRohGBreCFkKxLhei6S9CQXFEbbKuqLg0DA=="
+      crossorigin="anonymous"
+      referrerpolicy="no-referrer"
+    />
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+      integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN"
+      crossorigin="anonymous"
+    />
+  </head>
+  <body>
+    <style>
+      .container {
+        display: flex;
+        justify-content: center;
+      }
+    </style>
+    <h1 class="text-center">Book detail</h1>
+    <div class="container">
+      <div class="card" style="width: 18rem">
+        <img
+          class="card-img-top"
+          src="{{detail_book.image.url}}"
+          alt="Card image cap"
+        />
+        <div class="card-body">
+          <h5 class="card-title">{{detail_book.title | translete}}</h5>
+          <p class="card-text">{{detail_book.description | translete}}</p>
+        </div>
+        <ul class="list-group list-group-flush">
+          <li class="list-group-item">{{detail_book.page_size }}</li>
+          <li class="list-group-item">{{detail_book.price }}</li>
+          <li class="list-group-item">{{detail_book.published }}</li>
+        </ul>
+        <div class="card-body">
+          <p>
+            <i class="fa fa-calendar text-primary" aria-hidden="true"></i>
+            {{detail_book.create_at | timesince}}
+          </p>
+          <br />
+          <a href="http://127.0.0.1:8000/books/list/" class="card-link">back</a>
+        </div>
+      </div>
+    </div>
+  </body>
+</html>

@@ -1,0 +1,78 @@
+{% extends 'layouts/base.html' %}
+{% block content %}
+    <!-- bradcam_area_start -->
+    <div class="bradcam_area breadcam_bg">
+        <h3>LIKED</h3>
+    </div>
+    <!-- bradcam_area_end -->
+
+    <!--================Blog Area =================-->
+    <section class="blog_area section-padding">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-8 mb-5 mb-lg-0">
+                    <div class="blog_left_sidebar">
+                    {% for like in likes %}
+                        <article class="blog_item" style="max-width: 300px;" >
+                        <div class="blog_item_img">
+                            <img class="card-img rounded-0" src="{{like.post.image.url}}" alt="">
+                            <a href="" class="blog_item_date">
+                                {{ like.post.created_at|date:'F d' }}
+                            </a>
+                            
+                        </div>
+
+                        <div class="blog_details">
+                            <a class="d-inline-block" href="{% url 'blogs:blog_detail' pk=like.pk %}">
+                                <h2>{{like.post.headline}}</h2>
+                            </a>
+                            <p>{{like.post.short_description}}</p>
+                            <ul class="blog-info-link">
+                                {% for tag in like.post.tags.all %}
+                                <li><a href="#"><i class="fa fa-user"></i>{{tag.name}}</a></li>
+                                {% endfor %}
+                                <li><a href="#"><i class="fa fa-comments"></i> {{like.post.comment.all.count}} Comments</a></li>
+                            </ul>
+                        </div>
+                        </article>
+                    {% endfor %}
+                    
+                        <nav class="blog-pagination justify-content-center d-flex">
+                            <div class="pagination">
+                                <span class="step-links">
+                                    {% if page_obj.has_previous %}
+                                        <a href="?page=1" class="page-link" aria-label="First">
+                                            <i class="ti-angle-double-left"></i>
+                                        </a>
+                                        <a href="?page={{ page_obj.previous_page_number }}" class="page-link" aria-label="Previous">
+                                            <i class="ti-angle-left"></i>
+                                        </a>
+                                    {% endif %}
+                            
+                                    {% for num in page_obj.paginator.page_range %}
+                                        {% if page_obj.number == num %}
+                                            <span class="page-link current">{{ num }}</span>
+                                        {% else %}
+                                            <a href="?page={{ num }}" class="page-link">{{ num }}</a>
+                                        {% endif %}
+                                    {% endfor %}
+                            
+                                    {% if page_obj.has_next %}
+                                        <a href="?page={{ page_obj.next_page_number }}" class="page-link" aria-label="Next">
+                                            <i class="ti-angle-right"></i>
+                                        </a>
+                                        <a href="?page={{ page_obj.paginator.num_pages }}" class="page-link" aria-label="Last">
+                                            <i class="ti-angle-double-right"></i>
+                                        </a>
+                                    {% endif %}
+                                </span>
+                            </div>
+                            
+                        </nav>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!--================Blog Area =================-->
+{% endblock %}

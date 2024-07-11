@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <h1>{{game.title}}</h1>
+    <p>{{game.description}}</p>
+    <a href="{{game.link}}">Dowload</a>
+    <br />
+    <button><a href="{% url 'pages:list' %}">BACK</a></button>
+    <button>
+      <a href="{% url 'pages:delete' pk=game.id%}">Ochirish</a>
+    </button>
+    <button>
+      <a href="{% url 'pages:update' pk=game.id%}">ozgartirish</a>
+    </button>
+  </body>
+</html>

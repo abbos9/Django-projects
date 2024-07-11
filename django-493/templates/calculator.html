@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Mars</title>
+  </head>
+  <body>
+    <style>
+      .input_width {
+        max-width: 50px;
+      }
+    </style>
+    <div class="container">
+      <h1 style="text-align: center">Calculator</h1>
+      <form action="" method="POST">
+        {% csrf_token %}
+        <input
+          value="{{request.POST.num_1}}"
+          class="input_width"
+          type="text"
+          placeholder="num 1"
+          name="num_1"
+        />
+        <input
+          value="{{request.POST.op}}"
+          class="input_width"
+          type="text"
+          placeholder="op"
+          name="op"
+        />
+        <input
+          value="{{request.POST.num_2}}"
+          class="input_width"
+          type="text"
+          placeholder="num 2"
+          name="num_2"
+        />
+        <div>{{result}}</div>
+        <br />
+        <br />
+        <button type="submit">calculate</button>
+      </form>
+    </div>
+  </body>
+</html>

@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<h1>{{ game.name }}</h1>
+<p>{{ game.description }}</p>
+
+<a href="{{ game.link }}"><h4>Download</h4></a>
+
+<a href="{% url 'games:list' %}"><button>Back to games list</button></a>
+
+<a href="{% url 'games:delete' pk=game.id %}">O'chirish</a>
+<a href="{% url 'games:update' pk=game.id %}">O'zgartirish</a>
+
+</body>
+</html>

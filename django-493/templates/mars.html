@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <style>
+      input {
+        border: 1px solid rgba(0, 0, 0, 0);
+        -webkit-box-shadow: none;
+        -moz-box-shadow: none;
+        box-shadow: none;
+        width: 100%;
+        -webkit-transition: all 0.3s;
+        -o-transition: all 0.3s;
+        -moz-transition: all 0.3s;
+        transition: all 0.3s;
+        height: 60px;
+        padding: 0;
+        -webkit-box-flex: 0;
+        -webkit-flex-grow: 0;
+        -moz-box-flex: 0;
+        -ms-flex-positive: 0;
+        flex-grow: 0;
+        background: #f5f5f5;
+        -webkit-border-radius: 12px;
+        -moz-border-radius: 12px;
+        border-radius: 12px;
+        padding: 0 52px;
+        font-weight: 500;
+        font-size: 16px;
+        line-height: 140%;
+        letter-spacing: 0.2px;
+        color: #212121;
+      }
+      button {
+        padding: 18px 16px;
+        display: flex;
+        justify-content: center;
+        width: 380px;
+        height: 58px;
+        background: #ff805d;
+        -webkit-box-shadow: 4px 8px 24px rgba(247, 98, 51, 0.25);
+        -moz-box-shadow: 4px 8px 24px rgba(247, 98, 51, 0.25);
+        box-shadow: 4px 8px 24px rgba(247, 98, 51, 0.25);
+        -webkit-border-radius: 16px;
+        -moz-border-radius: 16px;
+        border-radius: 16px;
+        border: none;
+        font-weight: 700;
+        font-size: 16px;
+        line-height: 140%;
+        letter-spacing: 0.2px;
+        color: #fff;
+        text-align: center;
+        text-shadow: 4px 8px 24px rgba(247, 98, 51, 0.25);
+        cursor: pointer;
+      }
+      .owner {
+        display: flex;
+        justify-content: center;
+        gap: 200px;
+        height: 500px;
+        align-items: center;
+      }
+      .registration {
+        flex-direction: column;
+        display: flex;
+        max-width: 400px;
+        text-align: center;
+        gap: 20px;
+        margin-top: 20px;
+      }
+      .choose_human a {
+        font-weight: 600;
+        color: #ef400f;
+        font-weight: 400;
+        font-size: 18px;
+        line-height: 140%;
+        letter-spacing: 0.2px;
+        color: #9e9e9e;
+        width: 50%;
+        padding: 0;
+      }
+      .instruction video {
+        background-image: url(https://i.ytimg.com/vi/F2hzc4FKC9M/maxresdefault.jpg?sqp=-oaymwEmCIAKENAF8quKqQMa8AEB-AH-CYAC0AWKAgwIABABGHIgUCg_MA8=&rs=AOn4CLDOmqKDZyMO7bIaVWcD1h5NvMTbng);
+        background-size: cover;
+        -moz-background-size: cover;
+        -webkit-background-size: cover;
+        background-position: center;
+        background-repeat: no-repeat;
+        width: 100%;
+        height: 100%;
+      }
+    </style>
+    <div class="container">
+      <form action="" method="POST">
+        {% csrf_token %}
+        <div class="owner">
+          <div class="registration">
+            <div class="mars-logo">
+              <img
+                src="https://space.marsit.uz/img/mars-logo.32fd67b4.png"
+                alt="mars-logo"
+              />
+            </div>
+            <div class="choose_human">
+              <a href="#">Я студент</a>
+              <a href="#">Я родитель</a>
+            </div>
+            <h2>Войдите в свой аккаунт.</h2>
+            <div class="regist_form">
+              <input type="text" placeholder="modem ID" name="username" />
+              <br />
+              <input type="password" placeholder="password" name="password" />
+              <br />
+              <button type="submit">Потвердить</button>
+              <br />
+              <a>войдите с помощью qr codeda</a>
+              <p>🌐 Русский</p>
+            </div>
+          </div>
+          <div class="instruction">
+            <h1>Как пользоваться платформой Space Mars IT?</h1>
+            <video
+              autoplay="autoplay"
+              src="https://youtu.be/F2hzc4FKC9M"
+            ></video>
+          </div>
+        </div>
+      </form>
+    </div>
+  </body>
+</html>

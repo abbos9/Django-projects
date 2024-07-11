@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Registration</title>
+</head>
+<body>
+    <style>
+        .d-block {
+            display: block;
+            margin-bottom: 5px;
+        }
+    </style>
+    {% if request.POST %}
+        <h1>Successfully Registered !</h1>
+        <p>Username: {{ username }}</p>
+        <p>Phone: {{ phone }}</p>
+    {% else %}
+        <h1>Registration</h1>
+        <form action="" method="POST">
+            {% csrf_token %}
+            <input class="d-block" type="text" name="username" placeholder="username">
+            <input class="d-block" type="text" name="phone" placeholder="phone">
+            <input class="d-block" type="password" name="password" placeholder="password">
+            <input type="submit">
+        </form>
+    {% endif %}
+</body>
+</html>
